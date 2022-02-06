@@ -3,36 +3,18 @@
         <h1> {{titulo}} </h1>
     </div>
     <hr>
-    <form>
-        <div class="form-row">
-            <div class="form-group col-md-2">
-                <label for="Nombre" class="sr-only">Nombre</label>
-                <input type="text" placeholder="Nombre" class="form-control" name="nombre" id="nombre"
-                    [(ngModel)]="nombreInput">
-            </div>
-            <div class="form-group col-md-2">
-                <label for="Apellido" class="sr-only">Apellido</label>
-                <input type="text" placeholder="Apellido" class="form-control" name="apelldio" id="apellido"
-                    [(ngModel)]="apellidoInput">
-            </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary" (click)="agregar()">
-                    Agregardd
-                </button>
-            </div>
-        </div>
-    </form>
+    <app-formulario
+    (PersonaCreada)="PersonaAgregada($event)"
+    ></app-formulario>
     <hr>
 </div>
 
 
+<app-persona
+*ngFor="let item of personas; let i = index"
+    [item] = "item"
+    [i]="i"
+>
+    
+</app-persona>
 
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div *ngFor="let item of personas; let i = index">
-                {{i+1}}. {{item.Nombre}} {{item.Apellido}}
-            </div>
-        </div>
-    </div>
-</div>
