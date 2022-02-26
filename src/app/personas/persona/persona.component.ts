@@ -1,5 +1,6 @@
 import { Component ,Input,OnInit } from '@angular/core';
-import { Persona } from '../Persona.Model';
+import { Persona } from '../../Persona.Model';
+import { PersonasService } from '../../personas.service';
 
 
 @Component({
@@ -10,11 +11,16 @@ import { Persona } from '../Persona.Model';
 export class PersonaComponent implements OnInit {
 
   @Input() item:Persona;
-  @Input() i:number;
+  @Input() i:number; 
   
-  constructor() { }
+  constructor(private PersonaSer:PersonasService) { }
 
   ngOnInit(): void {
+  }
+
+  IndicarIndice():void{
+    this.PersonaSer.saludo.emit(this.i);
+    
   }
 
 }
